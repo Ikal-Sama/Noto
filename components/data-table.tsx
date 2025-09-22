@@ -68,7 +68,7 @@ export function DataTable<TData, TValue>({
       </div>
       <div className="overflow-hidden rounded-md mt-3">
         <Table>
-          <TableHeader>
+          <TableHeader className="bg-slate-100">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -109,7 +109,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  No notes found.
                 </TableCell>
               </TableRow>
             )}

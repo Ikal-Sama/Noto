@@ -3,6 +3,7 @@
 import { getUserNotes } from "@/app/server/note.action";
 import NoteCard from "./note-card";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 
 // Array of Tailwind background color classes
 const noteColors = [
@@ -45,10 +46,12 @@ export default function NoteList() {
           ))}
         </div>
       ) : (
-        <div className="flex justify-center items-center mt-10">
+        <div className="flex flex-col h-[60vh] justify-center gap-2 items-center mt-10">
+          <Image src={"/logo.png"} alt="Logo" width={80} height={80} />
           <p className="text-slate-600 text-xl font-bold">
-            You have no notes yet.
+            You don&apos;t have any notes yet
           </p>
+          <span className="text-sm text-slate-500">Create your own notes.</span>
         </div>
       )}
     </div>
