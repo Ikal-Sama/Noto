@@ -14,9 +14,9 @@ const HomePage = () => {
           Your thoughts, <span className="text-primary">organized</span>
         </h1>
         <p className="w-xl text-center text-lg text0slate-700 tracking-wide">
-          Organize your mind, one note at a time. It's the simple, beautiful way
-          to capture every thought, big or small, and keep your ideas in perfect
-          sync across all your devices.
+          Organize your mind, one note at a time. It&apos;s the simple,
+          beautiful way to capture every thought, big or small, and keep your
+          ideas in perfect sync across all your devices.
         </p>
 
         <div className="flex gap-2 mt-5">

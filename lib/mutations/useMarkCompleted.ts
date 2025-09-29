@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteUserNote, markAsCompleted } from "@/app/server/note.action";
+import { markAsCompleted } from "@/app/server/note.action";
 import { toast } from "sonner";
 
 export function useMarkAsCompleted() {

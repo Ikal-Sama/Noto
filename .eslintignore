@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.next/
+.generated/
+
+# Build output
+out/
+dist/
+build/
+
+# Generated files
+.generated/
+generated/
+
+# Cache
+.cache/
+
+# Environment files
+.env*.local
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
