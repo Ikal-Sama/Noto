@@ -4,8 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { getNotesQuery } from "@/lib/queries/noteQueries";
 import NoteTable from "./note-table";
+import { useState, useEffect } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function DashboardData() {
+  const [isMounted, setIsMounted] = useState(false);
   const { data, isLoading, error } = useQuery(getNotesQuery());
 
   // Calculate statistics
@@ -14,21 +17,32 @@ export default function DashboardData() {
     data?.notes?.filter((note) => note.isComplete).length || 0;
   const uncompletedNotes = totalNotes - completedNotes;
 
-  if (isLoading) {
-    return <div className="py-12">Loading statistics...</div>;
+  // Set isMounted to true after component mounts (client-side only)
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Don't render anything until component is mounted on client
+  if (!isMounted) {
+    return (
+      <div className="flex justify-center items-center my-[200px]">
+        <Loader2 className="animate-spin w-12 h-12 text-primary" />
+      </div>
+    );
   }
 
   if (error) {
     return (
       <div className="py-12 text-red-500">
-        Error loading notes: {error.message}
+        Error loading notes:{" "}
+        {error instanceof Error ? error.message : "An error occurred"}
       </div>
     );
   }
 
   return (
     <div className="py-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
         <Card className="w-full bg-slate-100">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Notes</CardTitle>
@@ -48,7 +62,7 @@ export default function DashboardData() {
             <div className="text-2xl font-bold text-primary">
               {completedNotes}
             </div>
-            <p className="text-xs  text-green-700">Tasks completed</p>
+            <p className="text-xs text-green-700">Tasks completed</p>
           </CardContent>
         </Card>
         <Card className="w-full bg-primary/70">
@@ -61,7 +75,7 @@ export default function DashboardData() {
             <div className="text-2xl font-bold text-white">
               {uncompletedNotes}
             </div>
-            <p className="text-xs  text-gray-100">Tasks to complete</p>
+            <p className="text-xs text-gray-100">Tasks to complete</p>
           </CardContent>
         </Card>
       </div>

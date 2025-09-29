@@ -40,7 +40,8 @@ export const columns: ColumnDef<Note>[] = [
     header: "Created At",
     cell: ({ row }) => {
       const date = new Date(row.getValue("createdAt"));
-      return date.toLocaleDateString();
+      // Use a fixed format to ensure consistency between server and client
+      return date.toISOString().split('T')[0]; // YYYY-MM-DD format
     },
   },
 ];

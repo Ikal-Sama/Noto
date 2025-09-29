@@ -1,5 +1,4 @@
 import { getUserNotes, getNoteById } from "@/app/server/note.action"
-import {  useQuery } from "@tanstack/react-query"
 
 
 export const getNotesQuery = () => ({
@@ -7,7 +6,7 @@ export const getNotesQuery = () => ({
     queryFn: getUserNotes
 })
 
-export const getNoteByIdQuery = (noteId: string) => useQuery({
+export const getNoteByIdQuery = (noteId: string) => ({
     queryKey: ['note', noteId],  // Remove 'as const'
     queryFn: () => getNoteById(noteId),
   });

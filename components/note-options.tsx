@@ -4,8 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Ellipsis } from "lucide-react";
@@ -13,9 +11,10 @@ import { EditForm } from "./edit-form";
 import { getNoteByIdQuery } from "@/lib/queries/noteQueries";
 import { useDeleteNoteMutation } from "@/lib/mutations/useDeleteNoteMutation";
 import { useMarkAsCompleted } from "@/lib/mutations/useMarkCompleted";
+import { useQuery } from "@tanstack/react-query";
 
 function NoteOptions({ noteId }: { noteId: string }) {
-  const { data: note } = getNoteByIdQuery(noteId);
+  const { data: note } = useQuery(getNoteByIdQuery(noteId));
 
   const { mutate: deleteNoteMutation } = useDeleteNoteMutation();
   const { mutate: markAsCompleted } = useMarkAsCompleted();

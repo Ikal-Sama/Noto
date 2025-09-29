@@ -35,10 +35,15 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  // Initialize state with default values to prevent hydration mismatch
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [isClient, setIsClient] = React.useState(false);
+
+  // Set isClient to true after component mounts (client-side only)
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
   const table = useReactTable({
     data,
     columns,
@@ -67,7 +72,8 @@ export function DataTable<TData, TValue>({
         />
       </div>
       <div className="overflow-hidden rounded-md mt-3">
-        <Table>
+        {/* Add key to force re-render when data changes */}
+        <Table key={isClient ? 'client' : 'server'}>
           <TableHeader className="bg-slate-100">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
