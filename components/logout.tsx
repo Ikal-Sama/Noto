@@ -13,8 +13,9 @@ export function Logout() {
     try {
       await authClient.signOut();
       // Re-render server components (layout/navbar) to reflect no session
-      router.refresh();
       router.push("/");
+
+      router.refresh();
     } finally {
       setLoading(false);
     }
