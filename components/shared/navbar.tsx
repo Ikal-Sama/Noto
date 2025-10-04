@@ -2,7 +2,6 @@ import React from "react";
 import NavLink from "./nav-link";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Notebook } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
@@ -43,15 +42,17 @@ const Navbar = async () => {
                 <Image
                   src={user?.image || "/avatar.png"}
                   alt="User Image"
-                  width={25}
-                  height={25}
+                  width={30}
+                  height={30}
                   className="rounded-full"
                 />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>{user?.name}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/dashboard/profile">Profile</Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Logout />
                 </DropdownMenuItem>

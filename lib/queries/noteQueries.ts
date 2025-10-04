@@ -9,4 +9,4 @@ export const getNotesQuery = () => ({
 export const getNoteByIdQuery = (noteId: string) => ({
     queryKey: ['note', noteId],  // Remove 'as const'
     queryFn: () => getNoteById(noteId),
-  });
+});
