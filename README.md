@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 15 Better Auth
 
-## Getting Started
+A modern, full-stack authentication system built with Next.js 15, Better Auth, and MongoDB. This application provides a solid foundation for building secure, production-ready authentication flows with email/password and OAuth providers, along with note management features.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔐 **Authentication** with Better Auth (Email/Password, Google OAuth)
+- 🚀 **Next.js 15** with App Router
+- 🗄 **MongoDB** with Prisma ORM
+- 📝 **Note Management** - Create, read, update, and delete notes
+- 🎨 **Modern UI** built with Radix UI and Tailwind CSS
+- 📱 **Fully Responsive** design
+- 🔄 **Form Handling** with React Hook Form and Zod validation
+- 🔒 **Protected Routes** with middleware
+- 👤 **User Profile** with image upload
+- 🔄 **Session Management** with secure token handling
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.0.0 or later
+- npm, yarn, or pnpm
+- Git
+- MongoDB connection string
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/next15-better-auth.git
+   cd next15-better-auth
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn
+   # or
+   pnpm install
+   ```
+
+3. **Set up environment variables**
+   - Copy `.env.example` to `.env.local`
+   - Update the environment variables with your configuration:
+     ```env
+     # MongoDB Connection
+     DATABASE_URL="mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority"
+     
+     # Authentication
+     NEXTAUTH_SECRET=your-secret-key
+     NEXTAUTH_URL=http://localhost:3000
+     
+     # Google OAuth (optional)
+     GOOGLE_CLIENT_ID=your-google-client-id
+     GOOGLE_CLIENT_SECRET=your-google-client-secret
+     ```
+
+4. **Set up the database**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+5. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 📁 Project Structure
+
+```
+.
+├── app/                    # App Router
+│   ├── actions/           # Server actions
+│   ├── dashboard/         # Protected dashboard routes
+│   ├── login/             # Login page
+│   ├── signup/            # Signup page
+│   └── server/            # Server actions
+├── components/            # Reusable components
+│   ├── dashboard/         # Dashboard components
+│   ├── shared/            # Shared UI components
+│   ├── ui/                # UI components
+│   └── user/              # User-related components
+├── lib/                   # Utility functions and configs
+│   ├── auth.ts            # Auth configuration
+│   ├── auth-client.ts     # Auth client utilities
+│   └── prisma.ts          # Prisma client
+├── prisma/                # Prisma schema
+└── public/                # Static files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the root directory with the following variables:
 
-## Learn More
+```env
+# MongoDB Connection
+DATABASE_URL="mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority"
 
-To learn more about Next.js, take a look at the following resources:
+# Authentication
+NEXTAUTH_SECRET=your-secret-key
+NEXTAUTH_URL=http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Google OAuth (optional)
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Database
 
-## Deploy on Vercel
+This project uses MongoDB with Prisma. You'll need to set up a MongoDB database and update the `DATABASE_URL` in your `.env.local` file.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠 Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `dev` - Start development server
+- `build` - Build for production
+- `start` - Start production server
+- `lint` - Run ESLint
+- `prisma:generate` - Generate Prisma client
+- `prisma:studio` - Open Prisma Studio
+
+## 🔒 Authentication
+
+### Available Providers
+
+- Email/Password
+- Google OAuth
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/)
+- [Better Auth](https://github.com/vercel-community/better-auth)
+- [Prisma](https://www.prisma.io/)
+- [MongoDB](https://www.mongodb.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/)
