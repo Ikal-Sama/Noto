@@ -1,22 +1,26 @@
 "use client";
 import { CldUploadWidget } from "next-cloudinary";
+import type {
+  CloudinaryUploadWidgetResults,
+  CloudinaryUploadWidgetInfo,
+} from "next-cloudinary";
 import Image from "next/image";
 import { useState, useTransition } from "react";
 import { UploadProfileImageProps } from "@/types/auth";
 import { updateProfileImage } from "@/app/actions/user";
 import { ImageUp } from "lucide-react";
 
-export const UploadProfileImage = ({
-  user,
-  session,
-}: UploadProfileImageProps) => {
+export const UploadProfileImage = ({ user }: UploadProfileImageProps) => {
   const [imageUrl, setImageUrl] = useState(user?.image || "");
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
 
-  const handleUploadSuccess = async (result: any) => {
-    if (result.info?.secure_url) {
-      const newImageUrl = result.info.secure_url;
+  const handleUploadSuccess = async (
+    results: CloudinaryUploadWidgetResults
+  ) => {
+    const result = results.info as CloudinaryUploadWidgetInfo;
+    if (result?.secure_url) {
+      const newImageUrl = result.secure_url;
 
       // Optimistically update the UI
       setImageUrl(newImageUrl);
