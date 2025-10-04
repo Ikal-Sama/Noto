@@ -26,7 +26,7 @@ const Navbar = async () => {
   const user = sessionResponse?.user ?? null;
 
   return (
-    <header className="flex justify-between max-w-screen-xl py-4 px-12 mx-auto bg-slate-50 shadow rounded-lg">
+    <header className="flex justify-between max-w-screen py-4 px-12 mx-auto bg-slate-50 shadow rounded-lg ">
       <Link href="/">
         <div className=" py-1 px-2 rounded-md group flex gap-1">
           <Logo />

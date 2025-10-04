@@ -13,7 +13,9 @@ export default function DashboardLayout({
   return (
     <div className="min-h-svh">
       <Navbar />
-      <main className="max-w-screen-xl px-12 mx-auto h-full">{children}</main>
+      <main className="max-w-screen px-12 lg:px-14 xl:px-16 mx-auto h-full">
+        {children}
+      </main>
     </div>
   );
 }
