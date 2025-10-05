@@ -120,3 +120,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+.custom-shape-divider-bottom-1759631978 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  /* This rotation is often used to flip a wave shape to the bottom */
+  transform: rotate(180deg); 
+}
+
+.custom-shape-divider-bottom-1759631978 svg {
+  position: relative;
+  display: block;
+  /* Makes the SVG slightly wider than the container to prevent visual gaps */
+  width: calc(110% + 1.3px); 
+  height: 188px;
+}
+
+.custom-shape-divider-bottom-1759631978 .shape-fill {
+  fill: #7ED321;
+}

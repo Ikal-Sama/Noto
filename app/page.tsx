@@ -8,7 +8,7 @@ import React from "react";
 const HomePage = () => {
   return (
     <div className="">
-      <section className="flex flex-col justify-center items-center gap-3 w-full h-screen">
+      <section className="flex flex-col justify-center items-center gap-3 w-full min-h-svh relative z-10">
         <Logo />
         <h1 className="text-2xl lg:text-3xl font-bold text-slate-800">
           Your thoughts, <span className="text-primary">organized</span>

@@ -35,7 +35,7 @@ export const signUp= async(values: z.infer<typeof signUpSchema>) => {
     try {
         await auth.api.signUpEmail({
         body: {
-            name: values.username, // required
+            name: values.name, 
             email: values.email, 
             password: values.password, 
         },

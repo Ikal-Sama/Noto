@@ -29,7 +29,7 @@ import { Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 
 export const signUpSchema = z.object({
-  username: z.string().min(3),
+  name: z.string().min(3),
   email: z.email(),
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
@@ -42,7 +42,7 @@ export function SignUpForm({
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
     },
@@ -102,10 +102,10 @@ export function SignUpForm({
                   <div className="grid gap-3">
                     <FormField
                       control={form.control}
-                      name="username"
+                      name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Username</FormLabel>
+                          <FormLabel>Name</FormLabel>
                           <FormControl>
                             <Input placeholder="shadn" {...field} />
                           </FormControl>
