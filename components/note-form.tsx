@@ -54,7 +54,8 @@ export const NoteForm = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button>
-          <Plus className="size-4 " /> Create note
+          <Plus className="size-4 " />{" "}
+          <span className="lg:block hidden">Create note</span>
         </Button>
       </DialogTrigger>
       {/* Hidden button to close dialog programmatically */}

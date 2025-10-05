@@ -13,7 +13,9 @@ export default async function NotesPage() {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="py-12">
         <div className="flex justify-between items-center border-b border-slate-200 pb-5">
-          <h1 className="text-2xl font-bold text-slate-800">My Notes</h1>
+          <h1 className="text-xl lg:text-2xl font-bold text-slate-800">
+            My Notes
+          </h1>
           <NoteForm />
         </div>
         <div>

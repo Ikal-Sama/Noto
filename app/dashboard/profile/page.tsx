@@ -27,7 +27,7 @@ const ProfilePage = async () => {
             <UploadProfileImage user={user} />
             <div className="flex justify-center flex-col items-center py-5">
               <UserDetails />
-              <div className="mt-16 flex lg:flex-row flex-col gap-5 ">
+              <div className="mt-16 flex lg:flex-row flex-col gap-5">
                 <EditProfile user={user} />
                 <EditPassword />
               </div>
