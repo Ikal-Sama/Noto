@@ -42,7 +42,8 @@ export const EditProfile = ({ user }: UploadProfileImageProps) => {
   const { mutate: updateProfileMutate, isPending } = useUpdateProfileMutation();
 
   async function onSubmit(values: z.infer<typeof editProfileFormSchema>) {
-    updateProfileMutate(values);
+    // Only send the name field to the server
+    updateProfileMutate({ name: values.name });
   }
 
   return (
@@ -78,7 +79,11 @@ export const EditProfile = ({ user }: UploadProfileImageProps) => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input {...field} disabled={isPending} />
+                    <Input
+                      {...field}
+                      disabled
+                      className="text-muted-foreground bg-muted/50"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
